@@ -375,6 +375,8 @@ body {
   margin: 0 0 16px;
 }
 
+.sheet .btn-pill { font-size: 16px; }
+
 .sheet p {
   font-family: var(--font-ui);
   font-size: var(--type-team);
