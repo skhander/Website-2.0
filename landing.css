@@ -349,8 +349,85 @@ body {
   .float-disco-r { left: 81.77%; top: auto; bottom: 0; width: 18.2%; transform: translateY(14.6%); --rest-rotate: 0deg; z-index: 0; }
 }
 
+/* Iridescent seam under the hero. Zero layout height so nothing around it moves. */
+.holo-divider {
+  position: relative;
+  z-index: 2;
+  height: 0;
+  --holo-h: 6px;
+  --spark: 16px;
+}
+
+.holo-divider::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--holo-h);
+  background:
+    linear-gradient(180deg, rgb(255 255 255 / 0.95) 0, rgb(255 255 255 / 0.55) 1.5px, rgb(255 255 255 / 0) 55%),
+    linear-gradient(90deg,
+      #cdb6ff 0%,
+      #ff9fd6 10%,
+      #d9b8ff 24%,
+      #ffa8dc 42%,
+      #c4a4ff 56%,
+      #a8d4ff 72%,
+      #8fe3ff 84%,
+      #c9b6ff 100%);
+  box-shadow:
+    0 2px 6px rgb(255 140 210 / 0.18),
+    0 6px 16px rgb(200 150 255 / 0.22);
+}
+
+/* Two four-point glints: tapered crossed lines plus a bright core. */
+.holo-divider::after {
+  content: "";
+  position: absolute;
+  top: calc(var(--holo-h) / 2 - var(--spark) / 2);
+  left: 0;
+  right: 0;
+  height: var(--spark);
+  pointer-events: none;
+  background:
+    radial-gradient(circle, #fff 0 1.5px, rgb(255 255 255 / 0.6) 2.5px, transparent 4px)
+      calc(7vw - var(--spark) / 2) 50% / var(--spark) var(--spark) no-repeat,
+    linear-gradient(90deg, transparent, #fff 50%, transparent)
+      calc(7vw - var(--spark) / 2) 50% / var(--spark) 1.5px no-repeat,
+    linear-gradient(180deg, transparent, #fff 50%, transparent)
+      calc(7vw - 0.75px) 50% / 1.5px var(--spark) no-repeat,
+    radial-gradient(circle, #fff 0 1.5px, rgb(255 255 255 / 0.6) 2.5px, transparent 4px)
+      right calc(7vw - var(--spark) / 2) center / var(--spark) var(--spark) no-repeat,
+    linear-gradient(90deg, transparent, #fff 50%, transparent)
+      right calc(7vw - var(--spark) / 2) center / var(--spark) 1.5px no-repeat,
+    linear-gradient(180deg, transparent, #fff 50%, transparent)
+      right calc(7vw - 0.75px) center / 1.5px var(--spark) no-repeat;
+  filter: drop-shadow(0 0 2px rgb(255 255 255 / 0.9));
+}
+
+@media (max-width: 767px) {
+  .holo-divider { --holo-h: 4px; --spark: 11px; }
+}
+
+.y2k-background {
+  background-color: #FAF9FF;
+  background-image:
+    linear-gradient(rgba(169, 184, 232, 0.10) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(169, 184, 232, 0.10) 1px, transparent 1px),
+    radial-gradient(ellipse at 0% 10%, rgba(249, 201, 243, 0.35), transparent 55%),
+    radial-gradient(ellipse at 100% 90%, rgba(184, 229, 255, 0.40), transparent 55%),
+    linear-gradient(135deg, #F6F3FF 0%, #FCFBFF 50%, #EFF9FF 100%);
+  background-size:
+    24px 24px,
+    24px 24px,
+    100% 100%,
+    100% 100%,
+    100% 100%;
+}
+
 .sheet {
-  background: var(--paper);
+  background: transparent;
   color: var(--ink);
 }
 
