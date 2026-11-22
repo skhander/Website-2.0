@@ -476,25 +476,6 @@ body {
   height: auto;
 }
 
-.about-badges {
-  display: flex;
-  flex-flow: row wrap;
-  align-items: flex-start;
-  gap: 12px 14px;
-  margin-top: 12px;
-}
-
-.about-badges .sticker {
-  font-size: clamp(20px, 4.5vw, 28px);
-}
-
-@media (max-width: 480px) {
-  .about-badges {
-    flex-direction: column;
-    gap: 10px;
-  }
-}
-
 .orbit-banner {
   position: relative;
   padding: 20px 0;
