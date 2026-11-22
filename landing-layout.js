@@ -17,7 +17,7 @@
     { key: "name", label: "Name", selector: ".hero .hero-name", serif: true },
     { key: "tagline", label: "Tagline", selector: ".tagline" },
     { key: "nav", label: "Nav links", selector: ".hero-nav .nav-links" },
-    { key: "pill", label: "work", selector: ".hero-cta" },
+    { key: "pill", label: "Portfolio", selector: ".hero-cta" },
   ].map((t) => ({ ...t, el: document.querySelector(t.selector) })).filter((t) => t.el);
 
   const nameOf = (el) => el.dataset.layoutFloat || "object";
