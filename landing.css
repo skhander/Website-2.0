@@ -65,6 +65,21 @@ body {
   letter-spacing: 0;
 }
 
+@media (hover: hover) and (pointer: fine) {
+  .hero-nav .nav-links a {
+    padding-bottom: 6px;
+    background: linear-gradient(currentColor, currentColor) left bottom / 0 1px no-repeat;
+    transition: background-size 200ms ease-out;
+  }
+
+  .hero-nav .nav-links a:hover,
+  .hero-nav .nav-links a:focus-visible { background-size: 100% 1px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-nav .nav-links a { transition: none; }
+}
+
 .nav-menu {
   display: none;
   position: relative;
@@ -138,12 +153,29 @@ body {
 
 .nav-dropdown a:active { background: rgba(5, 5, 5, 0.06); }
 
-.hero-cta {
+/* Hangs below the tagline so the title block's height, and the name's position, stay unchanged. */
+.hero .hero-cta {
   position: absolute;
-  z-index: 4;
+  top: calc(100% + var(--cta-gap));
   left: 50%;
-  bottom: 5%;
   transform: translateX(-50%);
+  min-height: 0;
+  padding: 0.55em 1.35em;
+  font-size: var(--cta-font);
+  line-height: 1.6;
+  white-space: nowrap;
+}
+
+/* Visible pill drops below 44px on phones; this keeps the tap area at least that tall. */
+.hero .hero-cta::before {
+  content: "";
+  position: absolute;
+  inset: -4px 0;
+}
+
+.hero {
+  --cta-font: clamp(14px, calc(13.4px + 0.27vw), 18px);
+  --cta-gap: clamp(28px, 2.8vw, 48px);
 }
 
 @media (pointer: coarse) and (hover: none), (max-width: 480px) {
@@ -267,23 +299,23 @@ body {
 /* Desktop collage — tuned at 1710×951 */
 .hero-title-block { top: 38%; }
 
-.float-disco-l { left: 0.29%; top: auto; bottom: 0; width: 14.75%; transform: translateY(1.5%); --rest-rotate: 0deg; z-index: 0; }
+.float-disco-l { left: 0.29%; top: auto; bottom: 0; width: 12.1%; transform: translateY(1.5%); --rest-rotate: 0deg; z-index: 0; }
 .float-croissant { left: 3.36%; top: 4.84%; width: 9.26%; --rest-rotate: 0deg; z-index: 1; }
 .float-bag { left: 15.46%; top: 6.62%; width: 9.91%; --rest-rotate: 0deg; z-index: 1; }
 .float-cake-pink { left: 30.09%; top: 5.68%; width: 5.66%; --rest-rotate: 0deg; z-index: 1; }
 .float-tennis { left: 66.67%; top: 6.83%; width: 4.54%; --rest-rotate: 0deg; z-index: 1; }
-.float-handbag { left: 8.73%; top: 31.23%; width: 14.93%; --rest-rotate: -4deg; z-index: 3; }
-.float-cart { left: 74.28%; top: 6.52%; width: 11.86%; --rest-rotate: 0deg; z-index: 2; }
+.float-handbag { left: 8.73%; top: 31.23%; width: 13.4%; --rest-rotate: -4deg; z-index: 3; }
+.float-cart { left: 74.28%; top: 11%; width: 11.86%; --rest-rotate: 0deg; z-index: 2; }
 .float-star { left: 84.48%; top: 32.49%; width: 9.32%; --rest-rotate: 0deg; z-index: 6; }
-.float-matcha { left: 18.11%; top: 60.46%; width: 10.03%; --rest-rotate: 0deg; z-index: 3; }
+.float-matcha { left: 22%; top: 60.46%; width: 10.03%; --rest-rotate: 0deg; z-index: 3; }
 .float-cake { left: 75.34%; top: 48.37%; width: 5.49%; --rest-rotate: 0deg; z-index: 1; }
 .float-sneaker { left: 62.12%; top: 67.3%; width: 16.7%; --rest-rotate: -5deg; z-index: 3; }
-.float-disco-r { left: 81.77%; top: auto; bottom: 0; width: 22.18%; transform: translateY(14.6%); --rest-rotate: 0deg; z-index: 0; }
+.float-disco-r { left: 81.77%; top: auto; bottom: 0; width: 18.2%; transform: translateY(14.6%); --rest-rotate: 0deg; z-index: 0; }
 
 /* Laptop and desktop: type scales with width like the collage, capped at the 1710px mockup sizes. */
 @media (min-width: 1025px) {
   .hero .hero-name {
-    font-size: min(90px, 5.26vw);
+    font-size: min(100px, 5.85vw);
     font-weight: 450;
     letter-spacing: 0.01em;
     white-space: nowrap;
@@ -303,18 +335,18 @@ body {
 }
 
 @media (min-width: 1025px) and (hover: hover) and (pointer: fine) {
-  .float-disco-l { left: 0.29%; top: auto; bottom: 0; width: 14.75%; transform: translateY(1.5%); --rest-rotate: 0deg; z-index: 0; }
+  .float-disco-l { left: 0.29%; top: auto; bottom: 0; width: 12.1%; transform: translateY(1.5%); --rest-rotate: 0deg; z-index: 0; }
   .float-croissant { left: 3.36%; top: 4.84%; width: 9.26%; --rest-rotate: 0deg; z-index: 1; }
   .float-bag { left: 15.46%; top: 6.62%; width: 9.91%; --rest-rotate: 0deg; z-index: 1; }
   .float-cake-pink { left: 30.09%; top: 5.68%; width: 5.66%; --rest-rotate: 0deg; z-index: 1; }
   .float-tennis { left: 66.67%; top: 6.83%; width: 4.54%; --rest-rotate: 0deg; z-index: 1; }
-  .float-handbag { left: 8.73%; top: 31.23%; width: 14.93%; --rest-rotate: -4deg; z-index: 3; }
-  .float-cart { left: 74.28%; top: 6.52%; width: 11.86%; --rest-rotate: 0deg; z-index: 2; }
+  .float-handbag { left: 8.73%; top: 31.23%; width: 13.4%; --rest-rotate: -4deg; z-index: 3; }
+  .float-cart { left: 74.28%; top: 11%; width: 11.86%; --rest-rotate: 0deg; z-index: 2; }
   .float-star { left: 84.48%; top: 32.49%; width: 9.32%; --rest-rotate: 0deg; z-index: 6; }
-  .float-matcha { left: 18.11%; top: 60.46%; width: 10.03%; --rest-rotate: 0deg; z-index: 3; }
+  .float-matcha { left: 22%; top: 60.46%; width: 10.03%; --rest-rotate: 0deg; z-index: 3; }
   .float-cake { left: 75.34%; top: 48.37%; width: 5.49%; --rest-rotate: 0deg; z-index: 1; }
   .float-sneaker { left: 62.12%; top: 67.3%; width: 16.7%; --rest-rotate: -5deg; z-index: 3; }
-  .float-disco-r { left: 81.77%; top: auto; bottom: 0; width: 22.18%; transform: translateY(14.6%); --rest-rotate: 0deg; z-index: 0; }
+  .float-disco-r { left: 81.77%; top: auto; bottom: 0; width: 18.2%; transform: translateY(14.6%); --rest-rotate: 0deg; z-index: 0; }
 }
 
 .sheet {
@@ -407,7 +439,7 @@ body {
     white-space: normal;
   }
 
-  .tagline { font-size: clamp(1.1rem, 3.2vw, 1.55rem); }
+  .tagline { font-size: clamp(19px, 3.2vw, 1.55rem); }
 }
 
 @media (max-width: 480px) {
@@ -425,11 +457,13 @@ body {
 
   .tagline {
     margin-top: 18px;
-    font-size: 1.05rem;
+    /* Scales with the name (11vw) and meets the 19px floor of the tablet range at 480px. */
+    font-size: clamp(16px, 4.2vw, 19px);
     line-height: 1.28;
   }
 
-  .hero-cta { bottom: 4%; }
+  /* The name spans nearly the full width here, so the cake moves below the button. */
+  .hero .float-cake { left: 74%; top: 76%; }
 }
 
 /* Tall mouse/trackpad windows (touch screens use the arc layout below). */
@@ -440,12 +474,12 @@ body {
   .float-bag { left: 4%; top: max(20%, 135px); width: 20%; }
   .float-cake-pink { left: 36%; top: max(8%, 88px); width: 14%; }
   .float-cart { left: 58%; top: max(7%, 85px); width: 22%; }
-  .float-star { left: 66%; top: 44%; width: 22%; }
+  .float-star { left: 38%; top: 19%; width: 18%; }
   .float-handbag { left: 4%; top: 56%; width: 24%; }
-  .float-sneaker { left: 62%; top: 57%; width: 30%; }
-  .float-cake { left: 56%; top: 64%; width: 16%; }
+  .float-sneaker { left: 62%; top: 63%; width: 30%; }
+  .float-cake { left: 76%; top: 45%; width: 16%; }
   .float-matcha { left: 30%; top: 70%; width: 15%; }
-  .float-tennis { left: 56%; top: 76%; width: 12%; }
+  .float-tennis { left: 56%; top: 79%; width: 12%; }
 
   .float-disco-l {
     left: 0;
@@ -477,12 +511,12 @@ body {
   .float-bag { left: 5%; top: 24%; width: 5.5%; }
   .float-cake-pink { left: 20%; top: 18%; width: 4%; }
   .float-cart { top: 18%; width: 7%; }
-  .float-star { left: 70%; top: 26%; width: 6%; }
+  .float-star { left: 66%; top: 22%; width: 6%; }
   .float-handbag { top: 42%; width: 8.5%; }
-  .float-sneaker { top: 44%; width: 11%; }
-  .float-cake { left: 66%; top: 54%; width: 5%; }
+  .float-sneaker { left: 72%; top: 50%; width: 11%; }
+  .float-cake { left: 66%; top: 58%; width: 5%; }
   .float-matcha { left: 27%; top: 60%; width: 6%; }
-  .float-tennis { left: 67%; top: 66%; width: 5%; }
+  .float-tennis { left: 67%; top: 72%; width: 5%; }
 
   .float-disco-l {
     left: 0;
@@ -741,7 +775,9 @@ html.layout-mode .float.is-selected .layout-handle { display: block; }
     /* Tallest object half-heights: bag (0.563 u) on top, matcha (0.61 u) below. */
     --top-end: calc(var(--mid) - var(--text-half) - var(--gap) - var(--lift) - var(--u-top) * 0.563);
     --top-mid: calc(var(--top-end) - var(--depth));
-    --bot-end: calc(var(--mid) + var(--text-half) + var(--gap) + var(--u-bot) * 0.61);
+    --cta-gap: 32px;
+    --cta-h: calc(var(--cta-font) * 2.7 + 2px);
+    --bot-end: calc(var(--mid) + var(--text-half) + var(--cta-gap) + var(--cta-h) + var(--gap) + var(--u-bot) * 0.61);
     --bot-mid: calc(var(--bot-end) + var(--depth));
   }
 
@@ -749,6 +785,12 @@ html.layout-mode .float.is-selected .layout-handle { display: block; }
   .float-disco-r { top: auto; bottom: 0; translate: none; }
   .float-disco-l { left: 0; right: auto; width: calc(var(--disco-w) * 0.589); transform: translate(-10%, 58%); }
   .float-disco-r { left: auto; right: 0; width: var(--disco-w); transform: translate(50%, 51%); }
+}
+
+@media (pointer: coarse) and (hover: none) and (max-width: 699px),
+       (pointer: coarse) and (hover: none) and (max-height: 699px),
+       (max-width: 480px) {
+  .hero { --cta-gap: 24px; }
 }
 
 /* Phone, portrait */
@@ -765,7 +807,7 @@ html.layout-mode .float.is-selected .layout-handle { display: block; }
 @media (pointer: coarse) and (hover: none) and (orientation: landscape) and (max-height: 699px) {
   .hero {
     --u-top: 13vh; --u-bot: 13vh;
-    --mid: 52%; --text-half: 38px; --gap: 18px; --lift: 10px; --depth: 1.5vh;
+    --mid: 42%; --text-half: 38px; --gap: 18px; --lift: 10px; --depth: 1.5vh;
     --t1: 32%; --t2: 44%; --t3: 56%; --t4: 68%;
     --disco-w: 19vw;
   }
