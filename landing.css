@@ -217,10 +217,11 @@ body {
   text-align: center;
   color: var(--paper);
   font-family: var(--font-ui);
-  font-size: 31.5px;
+  font-size: clamp(13px, 6.5vw, 31.5px);
   font-weight: 600;
   line-height: 1.22;
   letter-spacing: 0;
+  white-space: nowrap;
 }
 
 /* Outer: layout. Inner .float-motion: looped transform. */
@@ -538,7 +539,7 @@ body {
     white-space: normal;
   }
 
-  .tagline { font-size: clamp(19px, 3.2vw, 1.55rem); }
+  .tagline { font-size: clamp(14px, 4.1vw, 1.55rem); }
 }
 
 @media (max-width: 480px) {
@@ -556,8 +557,7 @@ body {
 
   .tagline {
     margin-top: 18px;
-    /* Scales with the name (11vw) and meets the 19px floor of the tablet range at 480px. */
-    font-size: clamp(16px, 4.2vw, 19px);
+    font-size: clamp(13px, 6.5vw, 18px);
     line-height: 1.28;
   }
 
@@ -604,7 +604,10 @@ body {
   .hero-title-block { top: 46%; }
 
   .hero .hero-name { font-size: clamp(32px, 11vh, 52px); white-space: nowrap; }
-  .tagline { margin-top: 10px; font-size: clamp(0.95rem, 4.4vh, 1.2rem); }
+  .tagline {
+    margin-top: 10px;
+    font-size: min(clamp(0.85rem, 4.4vh, 1.15rem), 5.8vw);
+  }
 
   .float-croissant { top: 16%; width: 7%; }
   .float-bag { left: 5%; top: 24%; width: 5.5%; }
