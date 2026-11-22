@@ -181,6 +181,7 @@ body {
   font-size: var(--cta-font);
   line-height: 1.6;
   white-space: nowrap;
+  pointer-events: auto;
 }
 
 /* Visible pill drops below 44px on phones; this keeps the tap area at least that tall. */
