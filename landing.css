@@ -456,9 +456,10 @@ body {
 }
 
 .sheet-inner {
-  max-width: 1280px;
+  max-width: 960px;
   margin-inline: auto;
   padding: clamp(40px, 4vw, 64px) clamp(20px, 3vw, 24px) clamp(36px, 3.5vw, 56px);
+  text-align: left;
 }
 
 .sheet + .sheet .sheet-inner { padding-top: 0; }
@@ -489,15 +490,19 @@ body {
 
 #about .about-content {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-columns: auto auto;
   align-items: center;
-  justify-content: start;
+  justify-content: center;
+  width: fit-content;
+  max-width: 100%;
+  margin-inline: auto;
+  text-align: left;
   gap: clamp(24px, 2.2vw + 12px, 48px);
 }
 
 #about .about-photo {
   width: clamp(220px, 12vw + 200px, 375px);
-  justify-self: start;
+  justify-self: center;
   margin: 0;
   aspect-ratio: 1 / 1.04;
   border-radius: clamp(20px, 1.5vw, 28px);
@@ -514,11 +519,12 @@ body {
 
 #about .about-stats {
   display: grid;
-  grid-template-columns: max-content minmax(0, 1fr);
+  grid-template-columns: max-content minmax(0, max-content);
   column-gap: var(--sheet-block);
   row-gap: var(--sheet-block);
   align-items: baseline;
   justify-items: start;
+  max-width: 100%;
 }
 
 #about .about-stat {
@@ -578,10 +584,15 @@ body {
 @media (max-width: 700px) {
   #about .about-content {
     grid-template-columns: 1fr;
+    justify-items: center;
   }
 
   #about .about-photo {
     aspect-ratio: 1 / 1;
+  }
+
+  #about .about-stats {
+    justify-self: center;
   }
 }
 
